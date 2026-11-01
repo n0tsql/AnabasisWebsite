@@ -1,0 +1,47 @@
+{
+  "homepage": "https://n0tsql.github.io/AnabasisWebsite",
+  "name": "anabasis-website",
+  "version": "1.0.0",
+  "private": true,
+  "reactSnap": {
+    "source": "build",
+    "inlineCss": false,
+    "skipThirdPartyRequests": true,
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
+    "include": [
+      "/",
+      "/404.html"
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "react-scripts": "^5.0.1"
+  },
+  "scripts": {
+    "prestart": "node scripts/generate-tooltips.js",
+    "start": "react-scripts start",
+    "prebuild": "node scripts/generate-tooltips.js && node scripts/generate-sitemap.js",
+    "build": "react-scripts build",
+    "postbuild": "react-snap"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "react-snap": "^1.23.0"
+  }
+}

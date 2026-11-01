@@ -1,0 +1,7 @@
+# Robots.txt for Anabasis
+# https://anabasisrpg.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://anabasisrpg.com/sitemap.xml

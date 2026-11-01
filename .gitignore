@@ -1,0 +1,58 @@
+# NOTE: this is the SOURCE branch. Build output goes to /build and is published
+# to the `gh-pages` deploy branch by .github/workflows/site.yml.
+
+# --- Claude Code ---
+.claude/
+CLAUDE.local.md
+
+# --- JetBrains (WebStorm, IntelliJ, ...) ---
+.idea/
+.idea_modules/
+*.iml
+*.iws
+*.ipr
+
+# --- VS Code / Zed / Sublime ---
+.vscode/
+.zed/
+*.sublime-project
+*.sublime-workspace
+
+# --- Vim / Emacs ---
+*.swp
+*.swo
+*~
+\#*#
+.#*
+
+# --- Dependencies ---
+/node_modules
+/.pnp
+.pnp.js
+/.yarn
+
+# --- Build output ---
+/build
+/coverage
+
+# --- Generated at build time (see the prestart/prebuild scripts in package.json) ---
+/public/sitemap.xml
+/src/pages/Home/tooltips.json
+
+# --- Logs ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Local env ---
+# `.env` itself is tracked on purpose: it holds public build flags and no secrets.
+.env.local
+.env.*.local
+
+# --- Lockfiles ---
+# This project uses yarn; yarn.lock is tracked (CI installs with --frozen-lockfile).
+/package-lock.json
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db

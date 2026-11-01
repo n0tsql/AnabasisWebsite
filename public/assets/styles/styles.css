@@ -623,3 +623,11 @@ p {
         margin-right: 0;
     }
 }
+/* Gold footer text. A class, not an inline style: the prerender browser would
+   rewrite an inline version and lose the -webkit- prefix older browsers need. */
+.gold-text {
+    background: linear-gradient(135deg, #A2790D 0%, #F2E29D 48%, #FFFFFF 50%, #F2E29D 52%, #A2790D 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}

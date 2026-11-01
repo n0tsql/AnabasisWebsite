@@ -1,0 +1,42 @@
+name: Site Publish CI
+on:
+  push:
+    branches:
+      - main
+  # Manual "deploy now" escape hatch — always builds, change or not.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Never let two deploys overlap; both push to gh-pages.
+concurrency:
+  group: site-publish
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          # Full history so scripts/generate-sitemap.js can read each page's real
+          # last-commit date for <lastmod> (a shallow clone dates everything the same).
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          # Held at 20 on purpose. `postbuild` runs react-snap, which prerenders
+          # the routes on puppeteer 1.20.0 (2019) — bumping node needs to be
+          # verified against that prerender, not slipped in as a drive-by.
+          node-version: '20.x'
+          cache: yarn
+      - name: Build
+        run: yarn install --frozen-lockfile && yarn build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./build
