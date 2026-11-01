@@ -146,11 +146,7 @@ ul li a:hover {
     background-color: var(--hephaestean-black);
          /* Adds space between image and text */
 }
-.mold-container {
-    display: flex;
-    align-items: center; /* Vertically centers text and image */
-    gap: 140px;           /* Adds space between image and text */
-}
+
 
 .worlds-trigger {
     position: relative;
@@ -294,7 +290,7 @@ ul li a:hover {
     display: inline-block;
     width: 3rem;
     height: 3rem;
-    background: url("../assets/brand/hephaesteanFlame_transparent.svg") no-repeat center center;
+    background: url("../assets/brand/hephaesteanFlame_Transparent.svg") no-repeat center center;
     background-size: contain;
     margin-right: 0rem;
     vertical-align: middle;
@@ -302,17 +298,202 @@ ul li a:hover {
 .hammer-icon {
     display: block;
 }
-.mold h2 {
+
+.bg-future-projects {
+    background:
+        linear-gradient(to top, transparent 70%, var(--hephaestean-black) 100%),
+        url("../assets/hero/games_List.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.future-projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal width sections */
+    gap: 20px;                             /* Space between sections */
+    width: 100%;
+    text-align: center;
+}
+
+
+
+.mold {
+    width: 100%;
+    padding: 60px 8%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.mold h1 {
+    color: var(--hephaestean-orange);
+    margin-bottom: 50px;
+}
+
+.mold-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 60px 100px;
+    position: relative;
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+}
+
+body { 
+    overflow-x: hidden
+}
+
+/* Central overlay */
+.mold-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 400px;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Spinning background image */
+.mold-center-image {
+    position: absolute;
+    margin-bottom: 22rem;
+    margin-right: -1rem;
+    width: 300%;
+    height: 300%;
+    object-fit: contain;
+
+    opacity: 0.12;
+    animation: mold-spin 40s linear infinite;
+
+    z-index: 1;
+}
+
+/* Text on top of the image */
+.mold-center-text {
+    position: relative;
+    z-index: 2;
+    
+    text-align: center;
+}
+
+.mold-center-text h2 {
+    color: var(--hephaestean-orange);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.mold-center-text p {
+    font-size: 0.9rem;
+    margin-left: 3rem;
+    max-width: 300px;
+}
+
+/* Rotation */
+@keyframes mold-spin {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .mold-center-image {
+        animation: none;
+    }
+}
+
+.mold-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.mold-item h2 {
+    color: var(--hephaestean-orange);
+    margin: 0;
+    font-size: 2rem;
+}
+
+.mold-item p {
+    max-width: 420px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+.future-projects img {
+    margin-top: 16rem;
+}
+.future-projects p {
+    margin-left: 25%;
+    max-width: 50%;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
     color: var(--hephaestean-white);
-    font-family: "Libre Baskerville", serif;
-    font-size: 1rem;
+    font-family: "DM Sans", sans-serif;
+    
+}
+
+
+@media (max-width: 768px) {
+  .future-projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+
+    .mold-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .mold h1 {
+        font-size: 1rem;
+    }
+
+    .mold-item h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.mold-container, .future-projects h2 {
+    color: var(--hephaestean-orange);
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.618rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    margin-bottom: 0;
+    margin-top: 8rem;
+}
+
+.mold-container p {
+    color: var(--hephaestean-white);
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem; /* golden ratio :O */
     font-weight: 200;
     text-align: center;
-    margin-left: 1rem;
-    letter-spacing: 1rem;
+    margin-left: 0.1rem;
+    letter-spacing: 0.1rem;
     margin-bottom: 0;
     margin-top: 0;
 }
+
 .mold h1 {
     color: var(--hephaestean-orange);
     font-family: "Libre Baskerville", serif;
