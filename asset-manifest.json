@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.js": "/AnabasisWebsite/static/js/main.60ddc5e9.js",
-    "index.html": "/AnabasisWebsite/index.html"
+    "main.js": "/static/js/main.5466002c.js",
+    "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/js/main.60ddc5e9.js"
+    "static/js/main.5466002c.js"
   ]
 }
