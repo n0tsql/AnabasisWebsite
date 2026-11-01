@@ -20,7 +20,7 @@ Requires Node 20 (the version CI uses) and Yarn 1.
 
 ```
 yarn install
-yarn start    # dev server at http://localhost:3000/AnabasisWebsite/
+yarn start    # dev server at http://localhost:3000/
 yarn build    # production build, including the pre-render, into build/
 ```
 
@@ -37,29 +37,32 @@ yarn build    # production build, including the pre-render, into build/
 
 ## Moving anabasisrpg.com to GitHub Pages
 
-Until this is done the site is served from https://n0tsql.github.io/AnabasisWebsite/ and
-anabasisrpg.com stays on its original host. Canonical URLs and the sitemap already point at
-anabasisrpg.com, so the github.io copy won't compete with it in search results.
+The repo is set up for the domain (`homepage` in `package.json` and `public/CNAME`; keep both, or
+the next deploy removes the custom domain from Pages). The domain's DNS decides which site visitors
+get, and it still points at the original host. The github.io address redirects to the domain, so
+it shows the original site too until DNS changes.
 
-Before changing anything, check what still lives only on the original host:
+To preview the GitHub Pages copy first, add `185.199.108.153 anabasisrpg.com` to your hosts file and
+open http://anabasisrpg.com/ (plain HTTP). DOOM won't load while that line is there, because it also
+reroutes the DOOM URL. Remove the line afterwards.
+
+Before changing DNS, check what still lives only on the original host:
 
 1. **Resource pack:** if it has changed since it was last committed here, commit the new one.
 2. **DOOM:** `DOOM_URL` in `src/pages/Home/Home.js` loads from anabasisrpg.com, which is about to
    point somewhere else. Give those files a new address and update the URL.
 3. **Anything else:** only files the page itself references were copied into this repo.
 
-Then, in this order:
+Then:
 
-1. In `package.json`, set `"homepage": "https://anabasisrpg.com"`.
-2. Create `public/CNAME` containing just `anabasisrpg.com`. Commit both and wait for the deploy.
-3. In the domain's DNS, replace the `anabasisrpg.com` record with these four `A` records. Leave
-   `wiki` and `play` alone, because they are separate records.
+1. Lower the TTL on the domain's current DNS record ahead of time, then replace that record with
+   these four `A` records. Leave `wiki` and `play` alone, because they are separate records.
    ```
    185.199.108.153
    185.199.109.153
    185.199.110.153
    185.199.111.153
    ```
-4. Once GitHub has issued the certificate, tick **Enforce HTTPS** under Settings > Pages. Until
+2. Once GitHub has issued the certificate, tick **Enforce HTTPS** under Settings > Pages. Until
    then, HTTPS visitors and resource pack downloads can fail with a certificate error, so make
    the DNS change when few players are online.
