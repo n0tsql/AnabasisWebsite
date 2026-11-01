@@ -17,17 +17,6 @@ export const NavBar = () => (
           </Link>
         </li>
       </span>
-        <a href="https://wiki.anabasisrpg.com">
-</a>
-      <li>
-        <a href="https://discord.gg/CUv2JR9KCm">           <img
-              src={`${process.env.PUBLIC_URL}/assets/images/discord.svg`}
-              alt="Discord Logo"
-              className="logo"
-              width="16"
-              height="auto"
-            /></a>
-      </li>
       <li>
         <a href="https://x.com/AnabasisRPG">           <img
               src={`${process.env.PUBLIC_URL}/assets/images/X_icon_2.svg`}
