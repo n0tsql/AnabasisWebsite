@@ -18,12 +18,13 @@ export const NavBar = () => (
         </li>
       </span>
       <li>
-        <a href="https://x.com/AnabasisRPG">           <img 
+        <a href="https://x.com/AnabasisRPG">           
+          <img 
               style={{ opacity: 0.5 }}
               src={`${process.env.PUBLIC_URL}/assets/images/X_icon_2.svg`}
               alt="X Logo"
               className="x-logo"
-              width="8"
+              width="28"
               height="auto"
             /></a>
       </li>
