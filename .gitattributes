@@ -1,3 +1,4 @@
 # Hosted files are published byte-for-byte, so never convert their line endings.
 public/assets/** -text
+public/hephaestus/** -text
 public/uploads/** -text

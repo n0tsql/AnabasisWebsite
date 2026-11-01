@@ -9,9 +9,9 @@ const IMAGES = `${process.env.PUBLIC_URL}/assets/images`;
 const TOOLTIPS = `${process.env.PUBLIC_URL}/assets/tooltips`;
 const DISCORD_URL = 'https://discord.gg/CUv2JR9KCm';
 
-// The DOOM files are hosted separately from this repo, on the original host. This
-// URL has to change when anabasisrpg.com moves to GitHub Pages (see the README's
-// "Moving anabasisrpg.com to GitHub Pages" checklist).
+// The DOOM files aren't in this repo. They stayed on the old host when
+// anabasisrpg.com moved to GitHub Pages, so this URL 404s until they are committed
+// to public/assets/doom/ (see "Known issues" in the README).
 const DOOM_URL = 'https://anabasisrpg.com/assets/doom/doom.html';
 
 const DESCRIPTION =

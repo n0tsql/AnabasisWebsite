@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+Linear+B&family=Stack+Sans+Text:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+    --hephaestean-orange: #DE793D;
+    --hephaestean-black: #1b1212;
+    --hephaestean-white: #FDF8F5;
+}
+
+.careers {
+    background-color: var(--hephaestean-black);
+    color: var(--hephaestean-white);
+    text-align: center;
+    padding: 2rem 0;
+    font-family: "DM Sans", sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.careers-item {
+    max-width: 100%;
+}  
+
+.legal { 
+    background-color: var(--hephaestean-black);
+    color: var(--hephaestean-white);
+    text-align: center;
+    padding: 2rem 0;
+    font-family: "DM Sans", sans-serif;
+    align-items: center;
+    text-align: left; 
+    padding-left: 0rem; 
+    display: flex; 
+    flex-direction: column; 
+    flex-wrap: wrap;
+    height: 50px;
+}
+body {
+    margin: 0
+}
+.hephaestus_navbar {
+    padding: 1rem 2rem;
+    font-family: "DM Sans", sans-serif;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 99999;
+}
+
+.hephaestus_navbar.scrolled {
+  background-color: rgba(27, 18, 18, 0.85); /* or solid color */
+  backdrop-filter: blur(10px);
+
+}
+
+ul {
+    width: 100%;
+    max-width: 1400px;
+    
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+ul li a {
+    color: var(--hephaestean-white);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 2rem;
+    transition: color 0.3s ease, font-weight 0.3s ease, font-size 0.3s ease;
+}
+
+
+ul li a:hover {
+    color: var(--hephaestean-orange);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 2.2rem;
+}
+
+.aeschylus-quote {
+    color: var(--hephaestean-white);
+    font-family: "Libre Baskerville", serif;
+    font-size: 1rem;
+    text-align: left;
+    opacity: 0.6;
+    margin-top: 0rem;
+    margin-left: 36rem !important;
+    padding-bottom: 0 !important;
+}
+
+.nav_hero {
+    background:
+        linear-gradient(to bottom, transparent 70%, var(--hephaestean-black) 100%),
+        url("../assets/hero/programmer_IslandOfTheDead.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    color: var(--hephaestean-white);
+    font-family: "Libre Baskerville", serif;
+    font-size: 2rem;
+    text-align: left;
+    margin-top: 16rem;
+    margin-bottom: 0rem;
+    margin-left: 10rem;
+}
+
+.hero p, .mold p {
+    color: var(--hephaestean-white);
+    font-family: "DM Sans", sans-serif;
+    font-size: 1.236rem;
+    text-align: left;
+    padding-bottom: 24rem;
+    margin-bottom: 0rem;
+    max-width: 900px;
+    margin-left: 11rem;
+
+}
+
+
+.mold p {
+    margin-top: 8rem;
+}
+.mold {
+    background-color: var(--hephaestean-black);
+         /* Adds space between image and text */
+}
+.mold-container {
+    display: flex;
+    align-items: center; /* Vertically centers text and image */
+    gap: 140px;           /* Adds space between image and text */
+}
+
+.worlds-trigger {
+    position: relative;
+}
+
+.worlds-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+        opacity 5s ease-in-out,
+        transform 5s ease-in-out,
+        visibility 5s ease-in-out;
+}
+
+
+
+.worlds-overlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.worlds-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.world-panel {
+
+}
+
+/* Expand the panel being hovered */
+.world-panel:hover {
+    flex: 1.4;
+}
+
+.world-panel {
+    position: relative;
+
+    width: 50%;
+    flex: 1;
+    min-width: 0;
+    transition: flex 0.5s ease;
+    height: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+    transition: flex 0.5s ease;
+}
+
+.world-panel:hover {
+    flex: 1.2 1 50%;
+}
+
+.worlds-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    z-index: 10001;
+
+    background: none;
+    border: none;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.world-panel:hover {
+    flex: 1.2;
+}
+
+.world-panel.anabasis {
+    background-image:
+        linear-gradient(#0005, #000b),
+        url("../assets/brand/anabasis/anabasis_background_1.webp");
+}
+
+.world-panel.horizon {
+    background-image:
+        linear-gradient(#0005, #000b),
+        url("../assets/brand/horizon/horizon_Background.png");
+}
+
+.world-info {
+    color: white;
+    text-align: center;
+}
+
+.world-info h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+}
+
+.world-info p {
+    letter-spacing: 1px;
+    font-size: 1rem;
+    width: 40rem;
+}
+
+.world-info span {
+    display: inline-block;
+    margin-top: 20px;
+    border-bottom: 1px solid white;
+    padding-bottom: 8px;
+}
+
+.flame-icon {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    background: url("../assets/brand/hephaesteanFlame_transparent.svg") no-repeat center center;
+    background-size: contain;
+    margin-right: 0rem;
+    vertical-align: middle;
+}
+.hammer-icon {
+    display: block;
+}
+.mold h2 {
+    color: var(--hephaestean-white);
+    font-family: "Libre Baskerville", serif;
+    font-size: 1rem;
+    font-weight: 200;
+    text-align: center;
+    margin-left: 1rem;
+    letter-spacing: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.mold h1 {
+    color: var(--hephaestean-orange);
+    font-family: "Libre Baskerville", serif;
+    font-size: 3rem;
+    text-align: center;
+    font-variant: small-caps;
+    margin: 0;
+}

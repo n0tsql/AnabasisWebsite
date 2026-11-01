@@ -1,7 +1,9 @@
 # Anabasis Website
 
 The website for [Anabasis](https://anabasisrpg.com): a React app with React Router,
-pre-rendered to static HTML by react-snap and hosted on GitHub Pages.
+pre-rendered to static HTML by react-snap and hosted on GitHub Pages. The
+[Hephaestus Interactive page](https://anabasisrpg.com/hephaestus/hephaestus.html) is published
+from this repo too, as a separate static page.
 
 ## How it works
 
@@ -13,6 +15,14 @@ pre-rendered to static HTML by react-snap and hosted on GitHub Pages.
   the workflow by hand from the Actions tab. Each deploy replaces `gh-pages`, so don't edit it directly.
 - **404s:** `/404.html` is listed in `reactSnap.include`, so react-snap renders the catch-all route
   into `404.html`. GitHub Pages serves that file with a real 404 status for any unknown URL.
+- **Domain:** `homepage` in `package.json` and `public/CNAME` set the site's address. Keep both, or
+  the next deploy removes the custom domain from Pages.
+- **Hephaestus page:** `public/hephaestus/` is plain HTML, CSS and JavaScript that the build copies
+  to `/hephaestus/` unchanged. It has its own stylesheet, script and images, and nothing from the
+  Anabasis site loads on it. Keep it out of the React app, because every `<Route>` renders through
+  `public/index.html`, which applies the Anabasis stylesheet. If a React page ever links to it, use
+  the full `https://` URL: react-snap follows relative links and would overwrite the file with its
+  own copy.
 
 ## Development
 
@@ -34,35 +44,10 @@ yarn build    # production build, including the pre-render, into build/
 | Loot tooltips      | Commit an image to `public/assets/tooltips/`. The marquee is generated from that folder at build time, in filename order.                                     |
 | Resource pack      | Replace `public/uploads/pack.zip` and commit. Each new version adds its full size to the repo's history, and GitHub rejects files over 100 MB.                |
 | Add a page         | Add a `<Route>` in `src/App.js`, its path to `reactSnap.include` in `package.json`, and its source file to `STATIC_SOURCE` in `scripts/generate-sitemap.js`.  |
+| Hephaestus page    | Edit the files in `public/hephaestus/`. Filenames must match their references exactly: GitHub Pages is case-sensitive, unlike Windows.                        |
 
-## Moving anabasisrpg.com to GitHub Pages
+## Known issues
 
-The repo is set up for the domain (`homepage` in `package.json` and `public/CNAME`; keep both, or
-the next deploy removes the custom domain from Pages). The domain's DNS decides which site visitors
-get, and it still points at the original host. The github.io address redirects to the domain, so
-it shows the original site too until DNS changes.
-
-To preview the GitHub Pages copy first, add `185.199.108.153 anabasisrpg.com` to your hosts file and
-open http://anabasisrpg.com/ (plain HTTP). DOOM won't load while that line is there, because it also
-reroutes the DOOM URL. Remove the line afterwards.
-
-Before changing DNS, check what still lives only on the original host:
-
-1. **Resource pack:** if it has changed since it was last committed here, commit the new one.
-2. **DOOM:** `DOOM_URL` in `src/pages/Home/Home.js` loads from anabasisrpg.com, which is about to
-   point somewhere else. Give those files a new address and update the URL.
-3. **Anything else:** only files the page itself references were copied into this repo.
-
-Then:
-
-1. Lower the TTL on the domain's current DNS record ahead of time, then replace that record with
-   these four `A` records. Leave `wiki` and `play` alone, because they are separate records.
-   ```
-   185.199.108.153
-   185.199.109.153
-   185.199.110.153
-   185.199.111.153
-   ```
-2. Once GitHub has issued the certificate, tick **Enforce HTTPS** under Settings > Pages. Until
-   then, HTTPS visitors and resource pack downloads can fail with a certificate error, so make
-   the DNS change when few players are online.
+- **DOOM:** the Konami code opens `DOOM_URL` from `src/pages/Home/Home.js`, but the DOOM files stayed
+  on the old host when the domain moved, so it shows the 404 page. Commit them to
+  `public/assets/doom/` and the existing URL works again.
