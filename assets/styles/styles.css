@@ -6,6 +6,13 @@
     padding: 0;
 }
 
+x-logo {
+    transition: fill 0.25s ease-in-out;
+}
+
+x-logo:hover {
+    fill: #A81330;
+}
 
 #tooltip-modal {
     position: fixed;
